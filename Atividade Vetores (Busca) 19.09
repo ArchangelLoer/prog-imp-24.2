@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] vetor = new int[10];
+        boolean ordenado = true;
+
+        for (int i = 0; i < 10; i++){
+            vetor[i] = scanner.nextInt();
+        }
+        for (int i = 0; i < 9; i++){
+            if(vetor[i] > vetor[i + 1]) ordenado = false;
+        }
+
+        if(ordenado) System.out.println("O vetor está ordenado");
+        else System.out.println("O vetor não está ordenado");
+
+        while(true){
+            System.out.println("Digite 1 caso você queira fazer uma busca no vetor, digite 2 caso você queira fechar o programa");
+            int comando = scanner.nextInt();
+            switch (comando) {
+                case 1:
+                    System.out.println("Digite o valor que você queira buscar no vetor:");
+                    int valor = scanner.nextInt();
+                    boolean encontrado = false;
+                    for(int i = 0; i < 10; i++){
+                        if(vetor[i] == valor) {
+                            encontrado = true;
+                            System.out.println("O valor digitado está na posição " + i);
+                        }
+                    }
+                    if(!encontrado) System.out.println("O valor digitado não está no vetor");
+                    break;
+                case 2:
+                    return;
+                default:
+                    System.out.println("Por favor, digite um comando valido");
+                    break;
+            }
+        }
+    }
+}
